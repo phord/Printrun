@@ -383,6 +383,8 @@ class GCode(object):
                             if len(heights) >= 2: self.est_layer_height = heights[1]
                             elif heights: self.est_layer_height = heights[0]
                             else: self.est_layer_height = 0.1
+                            if self.est_layer_height < 0.1:
+                                self.est_layer_height = 0.1
                         base_z = round(prev_z - (prev_z % self.est_layer_height), 2)
                     else:
                         base_z = round(prev_z, 2)
